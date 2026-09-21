@@ -455,6 +455,7 @@ scheduler(void)
         // before jumping back to us.
         p->state = RUNNING;
         c->proc = p;
+        dprintf(DBG_SCHED, DBG_TRACE, "scheduler selected process");
         swtch(&c->context, &p->context);
 
         // Don't re-enable interrupts on release.
