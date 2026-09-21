@@ -1,0 +1,70 @@
+Script started on 2026-09-21 18:15:25-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="62" LINES="36"]
+[?2004h]0;mgmccrory@DESKTOP-D1SEK1A: ~/mattmccrory-xv6-csce410-P1[01;32mmgmccrory@DESKTOP-D1SEK1A[00m:[01;34m~/mattmccrory-xv6-csce410-P1[00m$ make q emu
+[?2004lqemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 3 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+hart 1 starting
+hart 2 starting
+ireclaim: orphaned inode 25
+init: starting sh
+$ dbg on proc
+Debug categories enabled: proc
+Debug level: info
+[DBG:PROC] pid=3 kexit: process exiting: pid=3 status=0
+[DBG:PROC] pid=3 kexit: process reparenting: pid=3 children_reparented=0
+[DBG:PROC] pid=2 kwait: parent pid=2 reaped child pid=3
+[DBG:PROC] pid=2 freeproc: freeing process slot: pid=3
+$ ls
+[DBG:PROC] pid=2 allocproc: process slot allocated: pid=4
+[DBG:PROC] pid=2 kfork: process created: parent pid=2 child pid=4 copied size=20480
+[DBG:PROC] pid=4 kexec: exec success: path=ls argc=1 resulting size=20480
+.              1 1 1024
+..             1 1 1024
+README         2 2 2441
+cat            2 3 35432
+echo           2 4 34360
+forktest       2 5 17328
+grep           2 6 42784
+init           2 7 34816
+kill           2 8 34288
+ln             2 9 34088
+ls             2 10 41576
+mkdir          2 11 34336
+rm             2 12 34312
+sh             2 13 56184
+stressfs       2 14 35208
+usertests      2 15 199256
+grind          2 16 50560
+wc             2 17 36384
+zombie         2 18 33696
+logstress      2 19 36240
+forphan        2 20 35104
+dorphan        2 21 34552
+sync           2 22 33768
+dbg            2 23 43472
+console        3 24 0
+[DBG:PROC] pid=4 kexit: process exiting: pid=4 status=0
+[DBG:PROC] pid=4 kexit: process reparenting: pid=4 children_reparented=0
+[DBG:PROC] pid=2 kwait: parent pid=2 reaped child pid=4
+[DBG:PROC] pid=2 freeproc: freeing process slot: pid=4
+$ echo hi
+[DBG:PROC] pid=2 allocproc: process slot allocated: pid=5
+[DBG:PROC] pid=2 kfork: process created: parent pid=2 child pid=5 copied size=20480
+[DBG:PROC] pid=5 kexec: exec success: path=echo argc=2 resulting size=16384
+hi
+[DBG:PROC] pid=5 kexit: process exiting: pid=5 status=0
+[DBG:PROC] pid=5 kexit: process reparenting: pid=5 children_reparented=0
+[DBG:PROC] pid=2 kwait: parent pid=2 reaped child pid=5
+[DBG:PROC] pid=2 freeproc: freeing process slot: pid=5
+$ QEMU: Terminated
+[?2004h]0;mgmccrory@DESKTOP-D1SEK1A: ~/mattmccrory-xv6-csce410-P1[01;32mmgmccrory@DESKTOP-D1SEK1A[00m:[01;34m~/mattmccrory-xv6-csce410-P1[00m$ quit
+[?2004lCommand 'quit' not found, did you mean:
+  command 'quilt' from deb quilt (0.67+really0.67-4)
+  command 'qgit' from deb qgit (2.10-2)
+  command 'quiz' from deb bsdgames (2.17-30)
+Try: sudo apt install <deb name>
+[?2004h]0;mgmccrory@DESKTOP-D1SEK1A: ~/mattmccrory-xv6-csce410-P1[01;32mmgmccrory@DESKTOP-D1SEK1A[00m:[01;34m~/mattmccrory-xv6-csce410-P1[00m$ exit
+[?2004lexit
+
+Script done on 2026-09-21 18:16:08-05:00 [COMMAND_EXIT_CODE="127"]

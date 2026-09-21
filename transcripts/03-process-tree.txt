@@ -1,0 +1,399 @@
+Script started on 2026-09-21 18:38:34-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="62" LINES="36"]
+[?2004h]0;mgmccrory@DESKTOP-D1SEK1A: ~/mattmccrory-xv6-csce410-P1[01;32mmgmccrory@DESKTOP-D1SEK1A[00m:[01;34m~/mattmccrory-xv6-csce410-P1[00m$ make q emu [K
+[?2004lqemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 3 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+hart 1 starting
+hart 2 starting
+ireclaim: orphaned inode 28
+init: starting sh
+$ dbg on proc
+Debug categories enabled: proc
+Debug level: info
+[DBG:PROC] pid=3 kexit: process exiting: pid=3 status=0
+[DBG:PROC] pid=3 kexit: process reparenting: pid=3 children_reparented=0
+[DBG:PROC] pid=2 kwait: parent pid=2 reaped child pid=3
+[DBG:PROC] pid=2 freeproc: freeing process slot: pid=3
+$ fort ktest
+[DBG:PROC] pid=2 allocproc: process slot allocated: pid=4
+[DBG:PROC] pid=2 kfork: process created: parent pid=2 child pid=4 copied size=20480
+[DBG:PROC] pid=4 kexec: exec success: path=forktest argc=1 resulting size=12288
+fork test
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=5
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=5 copied size=12288
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=6
+[DBG:PROC] pid=5 kexit: process exiting: pid=5 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=6 copied size=12288
+[DBG:PROC] pid=5 kexit: process reparenting: pid=5 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=7
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=7 copied size=12288
+[DBG:PROC] pid=6 kexit: process exiting: pid=6 status=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=8
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=8 copied size=12288
+[DBG:PROC] pid=6 kexit: process reparenting: pid=6 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=9
+[DBG:PROC] pid=7 kexit: process exiting: pid=7 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=9 copied size=12288
+[DBG:PROC] pid=7 kexit: process reparenting: pid=7 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=10
+[DBG:PROC] pid=9 kexit: process exiting: pid=9 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=10 copied size=12288
+[DBG:PROC] pid=9 kexit: process reparenting: pid=9 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=11
+[DBG:PROC] pid=10 kexit: process exiting: pid=10 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=11 copied size=12288
+[DBG:PROC] pid=10 kexit: process reparenting: pid=10 children_reparented=0
+[DBG:PROC] pid=8 kexit: process exiting: pid=8 status=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=12
+[DBG:PROC] pid=8 kexit: process reparenting: pid=8 children_reparented=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=12 copied size=12288
+[DBG:PROC] pid=11 kexit: process exiting: pid=11 status=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=13
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=13 copied size=12288
+[DBG:PROC] pid=11 kexit: process reparenting: pid=11 children_reparented=0
+[DBG:PROC] pid=12 kexit: process exiting: pid=12 status=0
+[DBG:PROC] pid=13 kexit: process exiting: pid=13 status=0
+[DBG:PROC] pid=12 kexit: process reparenting: pid=12 children_reparented=0
+[DBG:PROC] pid=13 kexit: process reparenting: pid=13 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=14
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=14 copied size=12288
+[DBG:PROC] pid=14 kexit: process exiting: pid=14 status=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=15
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=15 copied size=12288
+[DBG:PROC] pid=14 kexit: process reparenting: pid=14 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=16
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=16 copied size=12288
+[DBG:PROC] pid=15 kexit: process exiting: pid=15 status=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=17
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=17 copied size=12288
+[DBG:PROC] pid=15 kexit: process reparenting: pid=15 children_reparented=0
+[DBG:PROC] pid=16 kexit: process exiting: pid=16 status=0
+[DBG:PROC] pid=16 kexit: process reparenting: pid=16 children_reparented=0
+[DBG:PROC] pid=17 kexit: process exiting: pid=17 status=0
+[DBG:PROC] pid=17 kexit: process reparenting: pid=17 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=18
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=18 copied size=12288
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=19
+[DBG:PROC] pid=18 kexit: process exiting: pid=18 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=19 copied size=12288
+[DBG:PROC] pid=18 kexit: process reparenting: pid=18 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=20
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=20 copied size=12288
+[DBG:PROC] pid=19 kexit: process exiting: pid=19 status=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=21
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=21 copied size=12288
+[DBG:PROC] pid=19 kexit: process reparenting: pid=19 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=22
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=22 copied size=12288
+[DBG:PROC] pid=20 kexit: process exiting: pid=20 status=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=23
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=23 copied size=12288
+[DBG:PROC] pid=20 kexit: process reparenting: pid=20 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=24
+[DBG:PROC] pid=21 kexit: process exiting: pid=21 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=24 copied size=12288
+[DBG:PROC] pid=21 kexit: process reparenting: pid=21 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=25
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=25 copied size=12288
+[DBG:PROC] pid=22 kexit: process exiting: pid=22 status=0
+[DBG:PROC] pid=23 kexit: process exiting: pid=23 status=0
+[DBG:PROC] pid=22 kexit: process reparenting: pid=22 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=26
+[DBG:PROC] pid=23 kexit: process reparenting: pid=23 children_reparented=0
+[DBG:PROC] pid=24 kexit: process exiting: pid=24 status=0
+[DBG:PROC] pid=25 kexit: process exiting: pid=25 status=0
+[DBG:PROC] pid=24 kexit: process reparenting: pid=24 children_reparented=0
+[DBG:PROC] pid=25 kexit: process reparenting: pid=25 children_reparented=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=26 copied size=12288
+[DBG:PROC] pid=26 kexit: process exiting: pid=26 status=0
+[DBG:PROC] pid=26 kexit: process reparenting: pid=26 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=27
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=27 copied size=12288
+[DBG:PROC] pid=27 kexit: process exiting: pid=27 status=0
+[DBG:PROC] pid=27 kexit: process reparenting: pid=27 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=28
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=28 copied size=12288
+[DBG:PROC] pid=28 kexit: process exiting: pid=28 status=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=29
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=29 copied size=12288
+[DBG:PROC] pid=28 kexit: process reparenting: pid=28 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=30
+[DBG:PROC] pid=29 kexit: process exiting: pid=29 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=30 copied size=12288
+[DBG:PROC] pid=29 kexit: process reparenting: pid=29 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=31
+[DBG:PROC] pid=30 kexit: process exiting: pid=30 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=31 copied size=12288
+[DBG:PROC] pid=30 kexit: process reparenting: pid=30 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=32
+[DBG:PROC] pid=31 kexit: process exiting: pid=31 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=32 copied size=12288
+[DBG:PROC] pid=31 kexit: process reparenting: pid=31 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=33
+[DBG:PROC] pid=32 kexit: process exiting: pid=32 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=33 copied size=12288
+[DBG:PROC] pid=32 kexit: process reparenting: pid=32 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=34
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=34 copied size=12288
+[DBG:PROC] pid=34 kexit: process exiting: pid=34 status=0
+[DBG:PROC] pid=34 kexit: process reparenting: pid=34 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=35
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=35 copied size=12288
+[DBG:PROC] pid=35 kexit: process exiting: pid=35 status=0
+[DBG:PROC] pid=33 kexit: process exiting: pid=33 status=0
+[DBG:PROC] pid=35 kexit: process reparenting: pid=35 children_reparented=0
+[DBG:PROC] pid=33 kexit: process reparenting: pid=33 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=36
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=36 copied size=12288
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=37
+[DBG:PROC] pid=36 kexit: process exiting: pid=36 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=37 copied size=12288
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=38
+[DBG:PROC] pid=37 kexit: process exiting: pid=37 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=38 copied size=12288
+[DBG:PROC] pid=37 kexit: process reparenting: pid=37 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=39
+[DBG:PROC] pid=38 kexit: process exiting: pid=38 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=39 copied size=12288
+[DBG:PROC] pid=38 kexit: process reparenting: pid=38 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=40
+[DBG:PROC] pid=39 kexit: process exiting: pid=39 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=40 copied size=12288
+[DBG:PROC] pid=39 kexit: process reparenting: pid=39 children_reparented=0
+[DBG:PROC] pid=36 kexit: process reparenting: pid=36 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=41
+[DBG:PROC] pid=40 kexit: process exiting: pid=40 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=41 copied size=12288
+[DBG:PROC] pid=41 kexit: process exiting: pid=41 status=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=42
+[DBG:PROC] pid=40 kexit: process reparenting: pid=40 children_reparented=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=42 copied size=12288
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=43
+[DBG:PROC] pid=41 kexit: process reparenting: pid=41 children_reparented=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=43 copied size=12288
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=44
+[DBG:PROC] pid=43 kexit: process exiting: pid=43 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=44 copied size=12288
+[DBG:PROC] pid=43 kexit: process reparenting: pid=43 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=45
+[DBG:PROC] pid=44 kexit: process exiting: pid=44 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=45 copied size=12288
+[DBG:PROC] pid=42 kexit: process exiting: pid=42 status=0
+[DBG:PROC] pid=44 kexit: process reparenting: pid=44 children_reparented=0
+[DBG:PROC] pid=42 kexit: process reparenting: pid=42 children_reparented=0
+[DBG:PROC] pid=45 kexit: process exiting: pid=45 status=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=46
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=46 copied size=12288
+[DBG:PROC] pid=45 kexit: process reparenting: pid=45 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=47
+[DBG:PROC] pid=46 kexit: process exiting: pid=46 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=47 copied size=12288
+[DBG:PROC] pid=46 kexit: process reparenting: pid=46 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=48
+[DBG:PROC] pid=47 kexit: process exiting: pid=47 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=48 copied size=12288
+[DBG:PROC] pid=47 kexit: process reparenting: pid=47 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=49
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=49 copied size=12288
+[DBG:PROC] pid=48 kexit: process exiting: pid=48 status=0
+[DBG:PROC] pid=49 kexit: process exiting: pid=49 status=0
+[DBG:PROC] pid=48 kexit: process reparenting: pid=48 children_reparented=0
+[DBG:PROC] pid=49 kexit: process reparenting: pid=49 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=50
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=50 copied size=12288
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=51
+[DBG:PROC] pid=50 kexit: process exiting: pid=50 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=51 copied size=12288
+[DBG:PROC] pid=50 kexit: process reparenting: pid=50 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=52
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=52 copied size=12288
+[DBG:PROC] pid=51 kexit: process exiting: pid=51 status=0
+[DBG:PROC] pid=52 kexit: process exiting: pid=52 status=0
+[DBG:PROC] pid=51 kexit: process reparenting: pid=51 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=53
+[DBG:PROC] pid=52 kexit: process reparenting: pid=52 children_reparented=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=53 copied size=12288
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=54
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=54 copied size=12288
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=55
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=55 copied size=12288
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=56
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=56 copied size=12288
+[DBG:PROC] pid=53 kexit: process exiting: pid=53 status=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=57
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=57 copied size=12288
+[DBG:PROC] pid=53 kexit: process reparenting: pid=53 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=58
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=58 copied size=12288
+[DBG:PROC] pid=55 kexit: process exiting: pid=55 status=0
+[DBG:PROC] pid=55 kexit: process reparenting: pid=55 children_reparented=0
+[DBG:PROC] pid=56 kexit: process exiting: pid=56 status=0
+[DBG:PROC] pid=57 kexit: process exiting: pid=57 status=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=59
+[DBG:PROC] pid=56 kexit: process reparenting: pid=56 children_reparented=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=59 copied size=12288
+[DBG:PROC] pid=54 kexit: process exiting: pid=54 status=0
+[DBG:PROC] pid=58 kexit: process exiting: pid=58 status=0
+[DBG:PROC] pid=54 kexit: process reparenting: pid=54 children_reparented=0
+[DBG:PROC] pid=58 kexit: process reparenting: pid=58 children_reparented=0
+[DBG:PROC] pid=57 kexit: process reparenting: pid=57 children_reparented=0
+[DBG:PROC] pid=59 kexit: process exiting: pid=59 status=0
+[DBG:PROC] pid=59 kexit: process reparenting: pid=59 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=60
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=60 copied size=12288
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=61
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=61 copied size=12288
+[DBG:PROC] pid=60 kexit: process exiting: pid=60 status=0
+[DBG:PROC] pid=60 kexit: process reparenting: pid=60 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=62
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=62 copied size=12288
+[DBG:PROC] pid=61 kexit: process exiting: pid=61 status=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=63
+[DBG:PROC] pid=61 kexit: process reparenting: pid=61 children_reparented=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=63 copied size=12288
+[DBG:PROC] pid=62 kexit: process exiting: pid=62 status=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=64
+[DBG:PROC] pid=63 kexit: process exiting: pid=63 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=64 copied size=12288
+[DBG:PROC] pid=63 kexit: process reparenting: pid=63 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process slot allocated: pid=65
+[DBG:PROC] pid=64 kexit: process exiting: pid=64 status=0
+[DBG:PROC] pid=4 kfork: process created: parent pid=4 child pid=65 copied size=12288
+[DBG:PROC] pid=62 kexit: process reparenting: pid=62 children_reparented=0
+[DBG:PROC] pid=4 allocproc: process allocation failed: no UNUSED slot
+[DBG:PROC] pid=64 kexit: process reparenting: pid=64 children_reparented=0
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=5
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=5
+[DBG:PROC] pid=65 kexit: process exiting: pid=65 status=0
+[DBG:PROC] pid=65 kexit: process reparenting: pid=65 children_reparented=0
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=6
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=6
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=7
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=7
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=8
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=8
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=9
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=9
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=10
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=10
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=11
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=11
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=12
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=12
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=13
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=13
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=14
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=14
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=15
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=15
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=16
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=16
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=17
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=17
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=18
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=18
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=19
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=19
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=20
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=20
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=21
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=21
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=22
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=22
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=23
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=23
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=24
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=24
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=25
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=25
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=26
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=26
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=27
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=27
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=28
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=28
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=29
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=29
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=30
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=30
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=31
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=31
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=32
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=32
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=33
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=33
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=34
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=34
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=35
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=35
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=36
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=36
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=37
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=37
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=38
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=38
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=39
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=39
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=40
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=40
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=41
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=41
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=42
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=42
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=43
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=43
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=44
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=44
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=45
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=45
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=46
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=46
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=47
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=47
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=48
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=48
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=49
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=49
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=50
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=50
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=51
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=51
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=52
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=52
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=53
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=53
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=54
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=54
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=55
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=55
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=56
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=56
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=57
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=57
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=58
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=58
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=59
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=59
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=60
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=60
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=61
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=61
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=62
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=62
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=63
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=63
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=64
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=64
+[DBG:PROC] pid=4 kwait: parent pid=4 reaped child pid=65
+[DBG:PROC] pid=4 freeproc: freeing process slot: pid=65
+fork test OK
+[DBG:PROC] pid=4 kexit: process exiting: pid=4 status=0
+[DBG:PROC] pid=4 kexit: process reparenting: pid=4 children_reparented=0
+[DBG:PROC] pid=2 kwait: parent pid=2 reaped child pid=4
+[DBG:PROC] pid=2 freeproc: freeing process slot: pid=4
+$ QEMU: Terminated
+[?2004h]0;mgmccrory@DESKTOP-D1SEK1A: ~/mattmccrory-xv6-csce410-P1[01;32mmgmccrory@DESKTOP-D1SEK1A[00m:[01;34m~/mattmccrory-xv6-csce410-P1[00m$ exit
+[?2004lexit
+
+Script done on 2026-09-21 18:39:16-05:00 [COMMAND_EXIT_CODE="0"]
