@@ -19,6 +19,12 @@
 #define DBG_INFO     3
 #define DBG_TRACE    4
 
+// debugctl operations
+#define DBG_GETMASK   0
+#define DBG_SETMASK   1
+#define DBG_GETLEVEL  2
+#define DBG_SETLEVEL  3
+
 // Global logging configuration
 extern uint64 dbg_mask;
 extern int dbg_level;

@@ -5,6 +5,7 @@
 #include "memlayout.h"
 #include "spinlock.h"
 #include "proc.h"
+#include "debug.h"
 #include "vm.h"
 
 uint64
@@ -34,6 +35,45 @@ sys_wait(void)
   uint64 p;
   argaddr(0, &p);
   return kwait(p);
+}
+
+uint64
+sys_debugctl(void)
+{
+  int op;
+  argint(0, &op);
+
+  uint64 value;
+  int level;
+
+  switch (op) {
+  case DBG_GETMASK:
+    return dbg_mask;
+
+  case DBG_SETMASK: {
+    argaddr(1, &value);
+    uint64 old = dbg_mask;
+    dbg_mask = value;
+    return old;
+  }
+
+  case DBG_GETLEVEL:
+    return dbg_level;
+
+  case DBG_SETLEVEL: {
+    argint(1, &level);
+
+    if (level < DBG_ERR || level > DBG_TRACE)
+      return -1;
+
+    int old = dbg_level;
+    dbg_level = level;
+    return old;
+  }
+
+  default:
+    return -1;
+  }
 }
 
 uint64
