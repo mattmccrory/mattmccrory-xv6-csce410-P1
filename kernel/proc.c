@@ -120,14 +120,18 @@ allocproc(void)
       release(&p->lock);
     }
   }
+  dprintf(DBG_PROC, DBG_WARN, "process allocation failed: no UNUSED slot");
   return 0;
 
 found:
   p->pid = allocpid();
   p->state = USED;
 
+  dprintf(DBG_PROC, DBG_INFO, "process slot allocated: pid=%d", p->pid);
+
   // Allocate a trapframe page.
   if ((p->trapframe = (struct trapframe *)kalloc()) == 0) {
+    dprintf(DBG_PROC, DBG_WARN, "process allocation failed: trapframe pid=%d", p->pid);
     freeproc(p);
     release(&p->lock);
     return 0;
@@ -136,6 +140,7 @@ found:
   // An empty user page table.
   p->pagetable = proc_pagetable(p);
   if (p->pagetable == 0) {
+    dprintf(DBG_PROC, DBG_WARN, "process allocation failed: pagetable pid=%d", p->pid);
     freeproc(p);
     release(&p->lock);
     return 0;
@@ -156,6 +161,7 @@ found:
 static void
 freeproc(struct proc *p)
 {
+  dprintf(DBG_PROC, DBG_INFO, "freeing process slot: pid=%d", p->pid);
   if (p->trapframe)
     kfree((void *)p->trapframe);
   p->trapframe = 0;
@@ -227,6 +233,8 @@ userinit(void)
   p->cwd = namei("/");
 
   p->state = RUNNABLE;
+
+  dprintf(DBG_PROC, DBG_INFO, "first user process created: pid=%d", p->pid);
 
   release(&p->lock);
 }
@@ -302,8 +310,10 @@ kfork(void)
   np->state = RUNNABLE;
   release(&np->lock);
 
-  dprintf(DBG_PROC, DBG_INFO, "process created: child pid=%d", pid);
-
+  dprintf(DBG_PROC, DBG_INFO,
+          "process created: parent pid=%d child pid=%d copied size=%d",
+          p->pid, pid, (int)np->sz);
+  
   return pid;
 }
 
@@ -329,12 +339,15 @@ void
 kexit(int status)
 {
   struct proc *p = myproc();
+  struct proc *child;
+  int reparented = 0;
 
   if (p == initproc)
     panic("init exiting");
 
-  dprintf(DBG_PROC, DBG_INFO, "process exiting: status=%d", status);
-  
+  dprintf(DBG_PROC, DBG_INFO,
+          "process exiting: pid=%d status=%d",
+          p->pid, status);  
   // Close all open files.
   for (int fd = 0; fd < NOFILE; fd++) {
     if (p->ofile[fd]) {
@@ -351,6 +364,11 @@ kexit(int status)
 
   acquire(&wait_lock);
 
+  for (child = proc; child < &proc[NPROC]; child++) {
+    if (child->parent == p)
+      reparented++;
+  }
+
   // Give any children to init.
   reparent(p);
 
@@ -363,6 +381,10 @@ kexit(int status)
   p->state = ZOMBIE;
 
   release(&wait_lock);
+
+  dprintf(DBG_PROC, DBG_INFO,
+        "process reparenting: pid=%d children_reparented=%d",
+        p->pid, reparented);
 
   // Jump into the scheduler, never to return.
   sched();
@@ -399,6 +421,11 @@ kwait(uint64 addr)
             release(&wait_lock);
             return -1;
           }
+
+          dprintf(DBG_PROC, DBG_INFO,
+                "parent pid=%d reaped child pid=%d",
+                p->pid, pid);
+
           pp->parent = 0;
           freeproc(pp);
           release(&pp->lock);
@@ -608,6 +635,7 @@ int
 kkill(int pid)
 {
   struct proc *p;
+  struct proc *caller = myproc();
 
   for (p = proc; p < &proc[NPROC]; p++) {
     acquire(&p->lock);
@@ -618,10 +646,20 @@ kkill(int pid)
         p->state = RUNNABLE;
       }
       release(&p->lock);
+
+      dprintf(DBG_PROC, DBG_INFO,
+            "kkill: killer pid=%d target pid=%d found=yes",
+            caller->pid, pid);
+
       return 0;
     }
     release(&p->lock);
   }
+
+  dprintf(DBG_PROC, DBG_WARN,
+        "kkill: killer pid=%d target pid=%d found=no",
+        caller->pid, pid);
+  
   return -1;
 }
 
