@@ -5,6 +5,7 @@
 #include "spinlock.h"
 #include "proc.h"
 #include "defs.h"
+#include "debug.h"
 
 struct cpu cpus[NCPU];
 
@@ -301,6 +302,8 @@ kfork(void)
   np->state = RUNNABLE;
   release(&np->lock);
 
+  dprintf(DBG_PROC, DBG_INFO, "process created: child pid=%d", pid);
+
   return pid;
 }
 
@@ -330,6 +333,8 @@ kexit(int status)
   if (p == initproc)
     panic("init exiting");
 
+  dprintf(DBG_PROC, DBG_INFO, "process exiting: status=%d", status);
+  
   // Close all open files.
   for (int fd = 0; fd < NOFILE; fd++) {
     if (p->ofile[fd]) {
