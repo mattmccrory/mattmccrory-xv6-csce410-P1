@@ -20,6 +20,7 @@ sys_exit(void)
 uint64
 sys_getpid(void)
 {
+  dprintf(DBG_SYSCALL, DBG_INFO, "getpid called");
   return myproc()->pid;
 }
 
