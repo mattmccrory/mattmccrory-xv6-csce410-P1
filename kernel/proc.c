@@ -27,6 +27,13 @@ extern char trampoline[]; // trampoline.S
 // must be acquired before any p->lock.
 struct spinlock wait_lock;
 
+static int
+debug_arg_probe(void)
+{
+  printk("DEBUG ARGUMENT EVALUATED\n");
+  return 123;
+}
+
 // Allocate a page for each process's kernel stack.
 // Map it high in memory, followed by an invalid
 // guard page.
@@ -303,6 +310,7 @@ kfork(void)
   release(&np->lock);
 
   dprintf(DBG_PROC, DBG_INFO, "process created: child pid=%d", pid);
+  dprintf(DBG_FS, DBG_INFO, "argument probe=%d", debug_arg_probe());
 
   return pid;
 }
